@@ -5,14 +5,7 @@
  */
 package dnd.cs;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -24,6 +17,8 @@ public class CharFrame extends javax.swing.JFrame {
      * Creates new form CharFrame
      */
     public static DnDCS currSheet = new DnDCS();
+    public static String[] lists;
+    public static DefaultListModel<String> model; 
 
     public CharFrame() {
         /* Not worth overlaying picture with swing the controll is non existant

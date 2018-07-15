@@ -6,7 +6,6 @@
 package dnd.cs;
 
 import dnd.cs.ABC.Class.Source.ClassSource;
-import static dnd.cs.CharFrame.currSheet;
 import java.util.List;
 
 /**
@@ -19,9 +18,9 @@ public class ClassNLevel extends javax.swing.JFrame {
              
     public ClassNLevel() {
         initComponents();
-        for(String x:classes){
-        jclassesList.addItem(x);
-        }
+        classes.forEach((x) -> {
+            jclassesList.addItem(x);
+        });
     }
 
 /**

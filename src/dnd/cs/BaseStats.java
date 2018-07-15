@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package dnd.cs;
+import static dnd.cs.CharFrame.lists;
+import static dnd.cs.CharFrame.model;
+import dnd.cs.utilities.StatsRoller;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -125,8 +129,8 @@ public class BaseStats extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       new StatsAssignment().setVisible(true);
-       this.setVisible(false);// TODO add your handling code here:
+        this.setVisible(false);
+        new StatsAssignment().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
