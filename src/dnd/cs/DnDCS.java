@@ -20,12 +20,14 @@ public class DnDCS {
     public ClassAndLevel classAndLevel; 
     public Object background;
     public String playerName;
-    public StatsTable stats;
+    public static StatsTable  stats;
     public int proficiencyBonus;
     public int inspiration;
     public Skills skills;
     
-    public DnDCS(){}
+    public DnDCS(){
+    this.stats = new StatsTable();
+    }
     public DnDCS(String charName,
             Class theClass, int level,
             String background,

@@ -4,21 +4,27 @@
  * and open the template in the editor.
  */
 package dnd.cs;
+
 import static dnd.cs.CharFrame.lists;
 import static dnd.cs.CharFrame.model;
 import dnd.cs.utilities.StatsRoller;
+import java.awt.Frame;
 import javax.swing.DefaultListModel;
-
+import javax.swing.JFrame;
 /**
  *
  * @author Dante
  */
-public class BaseStats extends javax.swing.JFrame {
+public class BaseStats extends javax.swing.JDialog {
 
+    JFrame parent;
     /**
      * Creates new form BaseStats
+     * @param parent
      */
-    public BaseStats() {
+    public BaseStats(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        this.parent = (JFrame) parent;
         initComponents();
     }
 
@@ -40,7 +46,7 @@ public class BaseStats extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setFont(new java.awt.Font("MV Boli", 0, 14)); // NOI18N
         jLabel5.setText("total of the highest 3 dice 6 times");
@@ -92,12 +98,12 @@ public class BaseStats extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jButton2)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -129,12 +135,19 @@ public class BaseStats extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        lists = StatsRoller.rollAll();
+        StatsAssigment statsAssigment = new StatsAssigment(parent, true);
+        statsAssigment.setVisible(true);
         this.setVisible(false);
-        new StatsAssignment().setVisible(true);
+        //this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        lists = StatsRoller.takeStandard();
+        StatsAssigment statsAssigment = new StatsAssigment(parent, true);
+        statsAssigment.setVisible(true);
+        this.setVisible(false);
+        //this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -164,10 +177,17 @@ public class BaseStats extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BaseStats().setVisible(true);
+                BaseStats dialog = new BaseStats(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

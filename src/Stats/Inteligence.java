@@ -15,8 +15,8 @@ public class Inteligence extends Stats {
     }
 
     public Inteligence(int value) {
-        this.value = value;
-        this.modifier = modModifier(value);
+        this.setValue(value);
+        modMStat();
     }
 
 }

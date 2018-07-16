@@ -15,8 +15,8 @@ public class Constitution extends Stats {
     }
 
     public Constitution(int value) {
-        this.value = value;
-        this.modifier = modModifier(value);
+        this.setValue(value);
+        modMStat();
     }
 
 }

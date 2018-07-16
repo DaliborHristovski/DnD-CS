@@ -12,7 +12,7 @@ package Stats;
 public class Charisma extends Stats{
     public Charisma(){}
     public Charisma(int value){
-        this.value = value;
-        modModifier(value);
+        this.setValue(value);
+        modMStat();
     }
 }

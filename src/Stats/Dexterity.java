@@ -15,8 +15,8 @@ public class Dexterity extends Stats {
     }
 
     public Dexterity(int value) {
-        this.value = value;
-        this.modifier = modModifier(value);
+        this.setValue(value);
+        modMStat();
     }
 
 }

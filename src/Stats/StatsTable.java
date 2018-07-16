@@ -4,21 +4,18 @@
  * and open the template in the editor.
  */
 package Stats;
-
-import dnd.cs.DnDCS;
-
 /**
  *
  * @author Uldyssian
  */
 public class StatsTable {
 
-    public Strenght STRENGTH;
-    public Dexterity DEXTERITY;
-    public Constitution CONSTITUTION;
-    public Inteligence INTELIGENCE;
+    public  Strenght STRENGTH;
+    public  Dexterity DEXTERITY;
+    public  Constitution CONSTITUTION;
+    public  Inteligence INTELIGENCE;
     public Wisdom WISDOM;
-    public Charisma CHARISMA;
+    public  Charisma CHARISMA;
 
     public StatsTable() {
         STRENGTH = new Strenght();

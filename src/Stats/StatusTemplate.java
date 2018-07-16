@@ -9,9 +9,9 @@ package Stats;
  *
  * @author Uldyssian
  */
-abstract class Stats extends StatsTable{
+abstract class Stats{
 
-    int value;
+    private int value;
     int modifier;
     
     // implement saving throws
@@ -37,11 +37,14 @@ abstract class Stats extends StatsTable{
     }
 
     public void modValue(int value) {
-        this.value += value;
+        this.setValue(this.value + value);
         this.modifier =modModifier(value);
     }
+    public void modMStat(){
+            this.modifier = modModifier(this.value);
+    }
 
-    public int modModifier(int value) {
+    private int modModifier(int value) {
         if (value == 1)return -5;
         
         switch (value/2) {
@@ -70,5 +73,12 @@ abstract class Stats extends StatsTable{
 
     public int getModifier() {
         return modifier;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(int value) {
+        this.value = value;
     }
 }

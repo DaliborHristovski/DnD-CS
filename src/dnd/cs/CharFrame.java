@@ -246,14 +246,15 @@ public class CharFrame extends javax.swing.JFrame {
             jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTRGroupLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jClasslField)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLevelField)
+                .addGroup(jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBackgroundField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPlayerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jClasslField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jLevelField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
+                .addGap(10, 10, 10)
                 .addGroup(jPanelTRGroupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel11)
@@ -304,14 +305,15 @@ public class CharFrame extends javax.swing.JFrame {
         jDexterity1Layout.setHorizontalGroup(
             jDexterity1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDexterity1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jIntelligenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jDexterity1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jIntMod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jDexterity1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDexterity1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jIntelligenceField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDexterity1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jIntMod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDexterity1Layout.setVerticalGroup(
             jDexterity1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,7 +663,7 @@ public class CharFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanelTRGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
                         .addComponent(jButtonSaveForm, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -672,7 +674,7 @@ public class CharFrame extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(232, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -694,15 +696,17 @@ public class CharFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jCharNameFieldActionPerformed
 
     private void jButtonSaveFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveFormActionPerformed
-        currSheet.charName = jCharNameField.getText().toString();
-        currSheet.playerName = jPlayerNameField.getText().toString();
-        currSheet.classAndLevel.level = Integer.parseInt(jLevelField.getText());
-
+        currSheet.charName = jCharNameField.getText();
+        currSheet.playerName = jPlayerNameField.getText();
+        //currSheet.classAndLevel.level = Integer.parseInt(jLevelField.getText());
+        //need to implement class code
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSaveFormActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new ClassNLevel().setVisible(true);        // TODO add your handling code here:
+        ClassNLevel classNLevel = new ClassNLevel(this, true);
+        classNLevel.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLevelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLevelFieldActionPerformed
@@ -766,7 +770,9 @@ public class CharFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jClasslFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new BaseStats().setVisible(true);
+        BaseStats baseStats = new BaseStats(this, true);
+        baseStats.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -803,6 +809,27 @@ public class CharFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static void refreshStatsAndMods(){
+       
+        CharFrame.jStrengthField.setText(String.valueOf(currSheet.stats.STRENGTH.getValue()));
+        CharFrame.jStrMod.setText("+" + String.valueOf(currSheet.stats.STRENGTH.getModifier()));
+        
+        CharFrame.jDexterityField.setText(String.valueOf(currSheet.stats.DEXTERITY.getValue()));
+        CharFrame.jDexMod.setText("+" + String.valueOf(currSheet.stats.DEXTERITY.getModifier()));
+        
+        CharFrame.jConstitutionField.setText(String.valueOf(currSheet.stats.CONSTITUTION.getValue()));
+        CharFrame.jConMod.setText("+" + String.valueOf(currSheet.stats.CONSTITUTION.getModifier()));
+        
+        CharFrame.jIntelligenceField.setText(String.valueOf(currSheet.stats.INTELIGENCE.getValue()));
+        CharFrame.jIntMod.setText("+" + String.valueOf(currSheet.stats.INTELIGENCE.getModifier()));
+        
+        CharFrame.jWisdomField.setText(String.valueOf(currSheet.stats.WISDOM.getValue()));
+        CharFrame.jWisdomMod.setText("+" + String.valueOf(currSheet.stats.WISDOM.getModifier()));
+        
+        CharFrame.jCharismaField.setText(String.valueOf(currSheet.stats.CHARISMA.getValue()));
+        CharFrame.jCharismaMod.setText("+" + String.valueOf(currSheet.stats.INTELIGENCE.getModifier()));
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -813,21 +840,21 @@ public class CharFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonSaveForm;
     private javax.swing.JTextField jCharNameField;
-    private javax.swing.JTextField jCharismaField;
-    private javax.swing.JTextField jCharismaMod;
+    public static javax.swing.JTextField jCharismaField;
+    public static javax.swing.JTextField jCharismaMod;
     public static javax.swing.JTextField jClasslField;
-    private javax.swing.JTextField jConMod;
+    public static javax.swing.JTextField jConMod;
     private javax.swing.JPanel jConstitution;
     private javax.swing.JPanel jConstitution1;
-    private javax.swing.JTextField jConstitutionField;
-    private javax.swing.JTextField jDexMod;
+    public static javax.swing.JTextField jConstitutionField;
+    public static javax.swing.JTextField jDexMod;
     private javax.swing.JPanel jDexterity;
     private javax.swing.JPanel jDexterity1;
     private javax.swing.JPanel jDexterity2;
-    private javax.swing.JTextField jDexterityField;
+    public static javax.swing.JTextField jDexterityField;
     private javax.swing.JTextField jExpField;
-    private javax.swing.JTextField jIntMod;
-    private javax.swing.JTextField jIntelligenceField;
+    public static javax.swing.JTextField jIntMod;
+    public static javax.swing.JTextField jIntelligenceField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -848,10 +875,10 @@ public class CharFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTRGroup;
     private javax.swing.JTextField jPlayerNameField;
     private javax.swing.JTextField jRaceField;
-    private javax.swing.JTextField jStrMod;
+    public static javax.swing.JTextField jStrMod;
     private javax.swing.JPanel jStrength;
-    private javax.swing.JTextField jStrengthField;
-    private javax.swing.JTextField jWisdomField;
-    private javax.swing.JTextField jWisdomMod;
+    public static javax.swing.JTextField jStrengthField;
+    public static javax.swing.JTextField jWisdomField;
+    public static javax.swing.JTextField jWisdomMod;
     // End of variables declaration//GEN-END:variables
 }
