@@ -120,7 +120,9 @@ public class ClassNLevel extends javax.swing.JDialog {
         CharFrame.jClasslField.setText(selectedItem);
         CharFrame.jLevelField.setText(jLevelFramePicker.getText());
         CharFrame.currSheet.classAndLevel.level = Integer.parseInt(jLevelFramePicker.getText());
-        CharFrame.currSheet.classAndLevel.theClass = ClassBase.getClass(selectedItem, Integer.parseInt(jLevelFramePicker.getText()));
+        CharFrame.currSheet.classAndLevel.theClass = ClassBase.getClass(
+                selectedItem, Integer.parseInt(jLevelFramePicker.getText())
+                );
         if(currSheet.stats.CONSTITUTION.getValue() != 0){
             AssignHitAndProficiency();
             RefreshHitAndProficiency();
