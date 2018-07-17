@@ -7,6 +7,7 @@ package dnd.cs;
 
 import Stats.StatsTable;
 import dnd.cs.ABC.Backgrounds.Acolyte;
+import dnd.cs.ABC.Class.ClassBase;
 import dnd.cs.ABC.ClassAndLevel;
 import dnd.cs.Skill.Skills;
 
@@ -17,23 +18,22 @@ import dnd.cs.Skill.Skills;
 public class DnDCS {
 
     public String charName;
-    public ClassAndLevel classAndLevel; 
+    public ClassAndLevel classAndLevel;
     public Object background;
     public String playerName;
     public static StatsTable  stats;
-    public int proficiencyBonus;
     public int inspiration;
     public Skills skills;
     
     public DnDCS(){
     this.stats = new StatsTable();
+    this.classAndLevel = new ClassAndLevel();
     }
     public DnDCS(String charName,
-            Class theClass, int level,
+            String theClass, int level,
             String background,
             String playerName,
             int charisma, int con, int dex, int inteligence, int str, int wis,
-            int proficiencyBonus,
             int inspiration,
             boolean Acrobatics, boolean Animal_Handling, boolean Arcana,
             boolean Athletics, boolean Deception, boolean History,
@@ -43,13 +43,12 @@ public class DnDCS {
             boolean sleightOfHand,boolean Stealth,boolean Survival)
     {
         this.charName = charName;
-        this.classAndLevel = new ClassAndLevel(theClass, level);
+        this.classAndLevel = new ClassAndLevel(ClassBase.getClass(theClass,level), level);
         this.background = new Acolyte();//needs actual implementation
         this.stats = new StatsTable(str, dex, con, inteligence, wis, charisma);
-        this.proficiencyBonus = proficiencyBonus;
         this.inspiration = inspiration;
 
-        this.skills = new Skills(this.stats, this.proficiencyBonus,
+        this.skills = new Skills(this.stats, this.classAndLevel.theClass.profBonusVal,
                 Acrobatics,Animal_Handling,Arcana,
                 Athletics,Deception,History,
                 Insight,Intimidation,Investigation,

@@ -5,18 +5,20 @@
  */
 package dnd.cs.ABC;
 
+import dnd.cs.ABC.Class.ClassBase;
+
 /**
  *
  * @author Dante
  */
 public class ClassAndLevel {
-    public Class theClass;
+    public ClassBase theClass;
     public int level;
     
     public ClassAndLevel(){
     }
     
-    public ClassAndLevel(Class theClass,int level){
+    public ClassAndLevel(ClassBase theClass,int level){
         this.theClass = theClass;
         this.level = level;
     }

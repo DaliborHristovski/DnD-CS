@@ -278,6 +278,11 @@ public class StatsAssigment extends javax.swing.JDialog {
         {
             AssingValues();
             CharFrame.refreshStatsAndMods();
+            //implement hitpoints from class
+            if(currSheet.classAndLevel.level != 0){
+            AssignHitAndProficiency();
+            RefreshHitAndProficiency();
+            }
             this.setVisible(false);
 
         }else{ clearFields();}
@@ -358,8 +363,16 @@ public class StatsAssigment extends javax.swing.JDialog {
         currSheet.stats.WISDOM.setValue(Integer.valueOf(jWisDec.getText()));
         currSheet.stats.WISDOM.modMStat();
         currSheet.stats.CHARISMA.setValue(Integer.valueOf(jCharDec.getText()));
-        currSheet.stats.CHARISMA.modMStat();
-        
+        currSheet.stats.CHARISMA.modMStat();  
+    }
+    public static void AssignHitAndProficiency(){
+    if( currSheet.classAndLevel.theClass.maxHitPoints == 0){
+        currSheet.classAndLevel.theClass.addFirstHitLevelUP();
+        for(int i=1; i<currSheet.classAndLevel.level; i++){
+            currSheet.classAndLevel.theClass.addLevelUpHPRoll();
+        }
+        currSheet.classAndLevel.theClass.proficiencyBonus(currSheet.classAndLevel.level);
+      }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -382,4 +395,5 @@ public class StatsAssigment extends javax.swing.JDialog {
     private javax.swing.JTextField jStrDec;
     private javax.swing.JTextField jWisDec;
     // End of variables declaration//GEN-END:variables
+
 }

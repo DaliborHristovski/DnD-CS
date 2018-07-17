@@ -30,7 +30,7 @@ public class StatsRoller {
             int curr = 0;
             int summOfBestRolls = 0;
             for (int j = 0; j < 4; j++) {
-                curr = roll6D();
+                curr = rollD6();
                 if (j > 0) {
                     if (curr >= min) {
                         summOfBestRolls += curr;
@@ -42,7 +42,10 @@ public class StatsRoller {
                     min = curr;
                 }
             }
+            //Not sure if correct but you reroll scores under 10
+            if(summOfBestRolls>9){
             finalRolls[i] = (String.valueOf(summOfBestRolls));
+            }else i--;
         }
             return finalRolls;
     }
@@ -50,9 +53,29 @@ public class StatsRoller {
         String[] val = {"15","14","13","12","10","8"};
         return val;
     }
-
-    public static int roll6D() {
-        return (int) ((Math.random() * 6) + 1);
+    
+    public static int rollD4() {
+       return rollSidedDie(4);
+    }
+    public static int rollD6() {
+       return rollSidedDie(6);
+    }
+    public static int rollD8() {
+       return rollSidedDie(8);
+    }
+    public static int rollD10() {
+       return rollSidedDie(10);
+    }
+    public static int rollD12() {
+       return rollSidedDie(12);
+    }
+    public static int rollD20() {
+       return rollSidedDie(20);
+    }        
+    
+    
+    public static int rollSidedDie(int i){
+         return (int) ((Math.random() * i) + 1);
     }
     
     public static boolean statInputCheck( Integer[] v){

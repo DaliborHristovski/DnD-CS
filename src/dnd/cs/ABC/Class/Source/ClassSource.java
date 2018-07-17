@@ -14,14 +14,23 @@ import java.util.stream.Stream;
  * @author Dante
  */
 public enum ClassSource {
+    
+    Barbarian,
+    Bard, 
+    Cleric,
+    Druid,
+    Fighter,
+    Monk,
+    Paladin,
+    Ranger,
+    Rogue,
+    Sorcerer,
+    Warlock,
+    Wizard;
 
-   Thief,Barbarian,Assasin,Priest,Paladin;
-   
-   
-   public static List<String> getClassList()
-   {
-   return Stream.of(ClassSource.values())
-                               .map(Enum::name)
-                               .collect(Collectors.toList());
-   }
+    public static List<String> getClassList() {
+        return Stream.of(ClassSource.values())
+                .map(Enum::name)
+                .collect(Collectors.toList());
+    }
 }

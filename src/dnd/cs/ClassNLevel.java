@@ -5,8 +5,12 @@
  */
 package dnd.cs;
 
+import dnd.cs.ABC.Class.ClassBase;
 import dnd.cs.ABC.Class.Source.ClassSource;
+import static dnd.cs.CharFrame.currSheet;
+import static dnd.cs.StatsAssigment.AssignHitAndProficiency;
 import java.util.List;
+import static dnd.cs.CharFrame.RefreshHitAndProficiency;
 /**
  *
  * @author Dante
@@ -107,9 +111,21 @@ public class ClassNLevel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //remove benifits from previous classes to prevent abuse
+        //add maybe a reset button to clear class related info from memory
+        //think about legacy classes and set hp after the stats are declared
+        
+        
         String selectedItem = (String)jclassesList.getSelectedItem();
         CharFrame.jClasslField.setText(selectedItem);
         CharFrame.jLevelField.setText(jLevelFramePicker.getText());
+        CharFrame.currSheet.classAndLevel.level = Integer.parseInt(jLevelFramePicker.getText());
+        CharFrame.currSheet.classAndLevel.theClass = ClassBase.getClass(selectedItem, Integer.parseInt(jLevelFramePicker.getText()));
+        if(currSheet.stats.CONSTITUTION.getValue() != 0){
+            AssignHitAndProficiency();
+            RefreshHitAndProficiency();
+        }
+        
         this.dispose();
         //this.setVisible(false);
 
